@@ -4,34 +4,9 @@ LivePoll is a mini end-to-end Stellar + Soroban dApp: a multi-wallet polling app
 
 ## Level 3 Submission Checklist (fill before submitting)
 
-- Live demo link: https://online-live-poll.vercel.app/
-- Demo video (1 minute) link: https://drive.google.com/file/d/1SRK_eF2qJyIfuN-KMlgzCpeacAeYJ23t/view?usp=sharing
+- Live demo link: https://online-live-poll-liard.vercel.app/
 - Test output screenshot (3+ passing tests): ✅ (see below)
-- Public GitHub repo link: `https://github.com/rohit-012005/Online-Live-Poll.git`
 - 3+ meaningful commits for Level 3: ✅
-
-
-## Submission Overview
-
-This project demonstrates:
-
-- Multi-wallet integration with `StellarWalletsKit`
-- Smart contract deployment on Stellar Testnet
-- Contract reads and writes from the frontend
-- Real-time event polling and state synchronization
-- Visible transaction lifecycle feedback
-- Wallet error handling for missing wallet, rejected request, and insufficient balance
-- Loading states and progress indicators during reads/writes
-- Basic caching of recently loaded poll data in `localStorage`
-- Automated tests for core helper logic
-
-## Key Features
-
-- Connect with supported Stellar wallets including Freighter, xBull, Albedo, Rabet, Lobstr, Hana, Hot Wallet, and Klever
-- Create, vote on, close, and delete polls through frontend contract calls
-- Browse contract data in read-only mode even without a connected wallet
-- See transaction phases in the UI: `preparing`, `awaiting-signature`, `pending`, `success`, and `error`
-- Refresh poll state automatically from recent on-chain contract events
 
 ## Screenshots
 
@@ -67,27 +42,20 @@ Below is a mobile view screenshot demonstrating the responsive layout on narrow 
 
 </div>
 
-
-## Deployed Contract
-
-- Network: `Stellar Testnet`
-- Contract address: `CDPYFRUN6ZRKUIKZR45AMWF7SYPQJL4WRJIBJI2SR3DWRMMANTXXRMD2`
-- Contract explorer: https://stellar.expert/explorer/testnet/contract/CDPYFRUN6ZRKUIKZR45AMWF7SYPQJL4WRJIBJI2SR3DWRMMANTXXRMD2
-
 ## Verifiable Contract Call
 
-- Deploy tx hash: `0e1e13467216b3056b5351fd7d10ea59e2bc3d3000056fe236e42d5e2cb4bcdd`
-- Stellar Expert link: https://stellar.expert/explorer/testnet/tx/0e1e13467216b3056b5351fd7d10ea59e2bc3d3000056fe236e42d5e2cb4bcdd
-- Sample `create_poll` tx hash: `e5a4df2c3ef97235d1b33ebe043cb66ab5642d53f0319caabc9f98e2239712c8`
-- Stellar Expert link: https://stellar.expert/explorer/testnet/tx/e5a4df2c3ef97235d1b33ebe043cb66ab5642d53f0319caabc9f98e2239712c8
+- Deploy tx hash: `9cc1509985bdd889c47f02e0cf5b29b39a4be3c61d363a60e841ffa3b8a10c62`
+- Stellar Expert link: https://stellar.expert/explorer/testnet/tx/9cc1509985bdd889c47f02e0cf5b29b39a4be3c61d363a60e841ffa3b8a10c62
+- Sample `create_poll` tx hash: `1fd899d9a98e7b262ec7ed357add3d65e7470808d2c715bcb73a94b0b6c69e2d`
+- Stellar Expert link: https://stellar.expert/explorer/testnet/tx/1fd899d9a98e7b262ec7ed357add3d65e7470808d2c715bcb73a94b0b6c69e2d
 
 ## Live Demo
 
-https://online-live-poll.vercel.app/
+https://online-live-poll-liard.vercel.app/
 
 ## Setup
 
-Run all commands from the `live-poll` project directory.
+Run all commands from the project directory.
 
 1. Install dependencies:
 
@@ -140,7 +108,7 @@ For submission, include a screenshot of the terminal output showing **3+ tests p
 ```env
 VITE_STELLAR_RPC_URL=https://soroban-testnet.stellar.org
 VITE_STELLAR_NETWORK_PASSPHRASE=Test SDF Network ; September 2015
-VITE_STELLAR_CONTRACT_ID=CDPYFRUN6ZRKUIKZR45AMWF7SYPQJL4WRJIBJI2SR3DWRMMANTXXRMD2
+VITE_STELLAR_CONTRACT_ID=CBT5GCDC2ZGBVPBOOLHI6DB5UDMX33XBQMOUQAEOJNE3I5I3DCVJKOD4
 VITE_STELLAR_READ_ACCOUNT=
 VITE_STELLAR_EXPLORER_URL=https://stellar.expert/explorer/testnet
 VITE_POLL_CONTRACT_WASM_URL=/contracts/poll_contract.wasm
@@ -152,15 +120,6 @@ VITE_POLL_CONTRACT_WASM_URL=/contracts/poll_contract.wasm
 - If a wallet has not been created on Testnet yet, fund it with Friendbot first and then retry
 - The app can still read poll data without a funded wallet by using a temporary read account
 
-## Scripts
-
-- `npm run dev` starts the frontend
-- `npm run build` creates a production build
-- `npm run lint` runs ESLint
-- `npm test` runs the Node.js test suite
-- `npm run contract:build` builds the Soroban contract
-- `npm run wasm:sync` copies the compiled WASM into `public/contracts/` for the frontend to load the contract spec
-- `npm run contract:deploy` uploads and deploys the contract to testnet
 
 ## Deploy (Vercel / Netlify)
 
@@ -171,37 +130,3 @@ This is a standard Vite build.
 - Output directory: `dist`
 - Set the env vars from the section above (at minimum `VITE_STELLAR_CONTRACT_ID` if you deploy a new contract)
 
-## Demo Video (1 minute)
-
-https://drive.google.com/file/d/1SRK_eF2qJyIfuN-KMlgzCpeacAeYJ23t/view?usp=sharing
-
-Walkthrough:
-
-1. Open the deployed site and show the “Read from contract” panel updating.
-2. Connect a wallet (Freighter or any supported wallet).
-3. Create a poll (show “awaiting-signature” → “pending” → “success”).
-4. Vote on the poll and show the event feed / vote count updating.
-5. Open the contract/tx on Stellar Expert via the links in the UI.
-
-## Project Structure
-
-- `src/` contains the React frontend
-- `src/lib/stellar.js` contains wallet, RPC, contract, and event helpers
-- `src/lib/pollCache.js` contains the basic poll cache helpers
-- `src/lib/pollLogic.js` contains pure helper functions used by the UI
-- `poll_contract/` contains the Soroban contract
-- `scripts/` contains deployment helpers
-- `tests/` contains the automated test suite
-
-## Additional Docs
-
-- Frontend guide: [FRONTEND.md](./FRONTEND.md)
-- Contract guide: [poll_contract/README.md](./poll_contract/README.md)
-
-## Submission Notes
-
-- GitHub repository: `https://github.com/Sagar522290/livepoll.git`
-- The project includes multiple meaningful commits in git history
-- The contract is deployed on testnet and called from the frontend
-- Real-time event integration and visible transaction status are implemented
-- Before final submission, update the checklist at the top with your live demo link, demo video link, and test screenshot
