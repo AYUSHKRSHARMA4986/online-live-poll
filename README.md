@@ -2,45 +2,41 @@
 
 LivePoll is a mini end-to-end Stellar + Soroban dApp: a multi-wallet polling app backed by a deployed Soroban smart contract on Stellar Testnet, with real-time contract event sync, transaction progress feedback, basic caching, and a small automated test suite.
 
-## Level 3 Submission Checklist (fill before submitting)
+## Level 2 Submission Checklist (fill before submitting)
 
 - Live demo link: https://online-live-poll-liard.vercel.app/
-- Test output screenshot (3+ passing tests): ✅ (see below)
-- 3+ meaningful commits for Level 3: ✅
 
-## Screenshots
+## Submission Overview
 
-<table width="100%">
-  <tr>
-    <td align="center" width="50%">
-      <strong>🏠 Home Page</strong><br/><br/>
-     <img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/b4661c6c-e042-48d4-8782-95f38fca39d3" />
-    </td>
-    <td align="center" width="50%">
-      <strong>📝 Create Poll</strong><br/><br/>
-   <img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/daff0cc6-f85c-4d33-aa38-c4f9d8bfe179" />
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <strong>🗳️ Voting</strong><br/><br/>
-  <img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/1c3b227c-a16e-42b0-9a4a-1bbfd46b6765" />
-    </td>
-    <td align="center" width="50%">
-      <strong>✅ CI/CD Results</strong><br/><br/>
-    <img width="1426" height="830" alt="image" src="https://github.com/user-attachments/assets/ae849647-7b8a-412e-92b8-0fb1532a5c4a" />
-    </td>
-  </tr>
-</table>
+This project demonstrates:
 
-## Mobile responsive screenshots
+- Multi-wallet integration with `StellarWalletsKit`
+- Smart contract deployment on Stellar Testnet
+- Contract reads and writes from the frontend
+- Real-time event polling and state synchronization
+- Visible transaction lifecycle feedback
+- Wallet error handling for missing wallet, rejected request, and insufficient balance
+- Loading states and progress indicators during reads/writes
+- Basic caching of recently loaded poll data in `localStorage`
+- Automated tests for core helper logic
 
-Below is a mobile view screenshot demonstrating the responsive layout on narrow screens. Replace the placeholder with a real phone-sized screenshot captured from the dev tools or a device.
+## Key Features
 
-<div align="center">
-<img width="389" height="700" alt="2026-04-30_18-25-47" src="https://github.com/user-attachments/assets/23b9e24d-e978-4e81-9db3-dc2976486253" />
+- Connect with supported Stellar wallets including Freighter, xBull, Albedo, Rabet, Lobstr, Hana, Hot Wallet, and Klever
+- Create, vote on, close, and delete polls through frontend contract calls
+- Browse contract data in read-only mode even without a connected wallet
+- See transaction phases in the UI: `preparing`, `awaiting-signature`, `pending`, `success`, and `error`
+- Refresh poll state automatically from recent on-chain contract events
 
-</div>
+## Screenshot
+
+![img.png](img.png)
+
+## Deployed Contract
+
+- Network: `Stellar Testnet`
+- Contract address: `CBT5GCDC2ZGBVPBOOLHI6DB5UDMX33XBQMOUQAEOJNE3I5I3DCVJKOD4`
+- Contract explorer: https://stellar.expert/explorer/testnet/contract/CBT5GCDC2ZGBVPBOOLHI6DB5UDMX33XBQMOUQAEOJNE3I5I3DCVJKOD4
 
 ## Verifiable Contract Call
 
@@ -101,8 +97,6 @@ Run the automated tests:
 npm test
 ```
 
-For submission, include a screenshot of the terminal output showing **3+ tests passing**.
-
 ## Environment Variables
 
 ```env
@@ -130,3 +124,24 @@ This is a standard Vite build.
 - Output directory: `dist`
 - Set the env vars from the section above (at minimum `VITE_STELLAR_CONTRACT_ID` if you deploy a new contract)
 
+## Project Structure
+
+- `src/` contains the React frontend
+- `src/lib/stellar.js` contains wallet, RPC, contract, and event helpers
+- `src/lib/pollCache.js` contains the basic poll cache helpers
+- `src/lib/pollLogic.js` contains pure helper functions used by the UI
+- `poll_contract/` contains the Soroban contract
+- `scripts/` contains deployment helpers
+- `tests/` contains the automated test suite
+
+## Additional Docs
+
+- Frontend guide: [FRONTEND.md](./FRONTEND.md)
+- Contract guide: [poll_contract/README.md](./poll_contract/README.md)
+
+## Submission Notes
+
+- The project includes multiple meaningful commits in git history
+- The contract is deployed on testnet and called from the frontend
+- Real-time event integration and visible transaction status are implemented
+- Before final submission, update the checklist at the top with your live demo link, demo video link, and test screenshot
