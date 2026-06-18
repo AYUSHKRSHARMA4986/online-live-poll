@@ -18,13 +18,13 @@ LivePoll is a mini end-to-end Stellar + Soroban dApp: a multi-wallet polling app
     </td>
     <td align="center" width="50%">
       <strong>📝 Create Poll</strong><br/><br/>
-   <img width="2848" height="1572" alt="screenshot_visible_2026-04-30_17-14-55" src="https://github.com/user-attachments/assets/1e63b7cd-6ce2-4ef4-a07b-1ecae1771c22" />
+   <img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/daff0cc6-f85c-4d33-aa38-c4f9d8bfe179" />
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <strong>🗳️ Voting</strong><br/><br/>
-   <img width="2848" height="1572" alt="screenshot_visible_2026-04-30_17-17-31" src="https://github.com/user-attachments/assets/b962d4ce-2b4e-42e4-9f8e-29774f78538d" />
+  <img width="1918" height="928" alt="image" src="https://github.com/user-attachments/assets/1c3b227c-a16e-42b0-9a4a-1bbfd46b6765" />
     </td>
     <td align="center" width="50%">
       <strong>✅ CI/CD Results</strong><br/><br/>
